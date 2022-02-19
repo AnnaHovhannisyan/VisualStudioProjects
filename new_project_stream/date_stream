@@ -1,0 +1,63 @@
+
+const { Readable, Transform } = require('stream');
+
+ const { Writable } = require('stream');
+
+ const fs=require('fs');
+
+ const moment=require('moment');
+
+try{
+
+    let readStream = new Readable({
+        read(){
+          
+            setTimeout(()=>{
+                this.push(`${Date.now()}\n`)
+             },1000)
+
+            
+        
+        }
+    })
+    readStream.setEncoding('utf8');
+
+
+     let transform =new Transform({
+        transform(chunk,encoding,callback){
+            this.push(Buffer.from(`${moment(Number(chunk.toString())).format("dddd MMMM Do YYYY,h:mm:ss:S a")}\n`))
+            callback()
+         }
+     }
+     )
+
+     
+ let writableStream = new Writable({
+     write(chunk,encoding,callback){
+         console.log(chunk.toString());
+         fs.writeFile('./text_new.txt',chunk,{flag:'a',encoding:'utf8'},callback);
+        
+     }
+ })
+
+ readStream.pipe(transform).on('data',(chunk)=>{
+     writableStream.write(chunk);
+ })
+
+ 
+
+}catch(e){
+    if(e instanceof TypeError){
+        console.log(TypeError);
+    }
+    if(e instanceof SyntaxError){
+        console.log(SyntaxError);
+    }
+    if(e instanceof RangeError){
+        console.log(RangeError);
+    }
+    else{
+        console.log("another err");
+    }
+
+}
