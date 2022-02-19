@@ -11,14 +11,14 @@
   "license": "ISC",
   "repository": {
     "type":"git",
-    "url":"git-https://github.com/AnnaHovhannisyan/CodeAcademyACA.git"
+    "url":"https://github.com/AnnaHovhannisyan/VisualStudioProjects.git"
   },
 
   "bugs":{
-    "url":"https://github.com/AnnaHovhannisyan/CodeAcademyACA/issues"
+    "url":"https://github.com/AnnaHovhannisyan/VisualStudioProjects/issues"
   },
 
-  "homepage":"http://github.com/AnnaHovhannisyan/CodeAcademyACA#readme",
+  "homepage":"http://github.com/AnnaHovhannisyan/VisualStudioProjects#readme",
   "devDependencies": {
     "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
